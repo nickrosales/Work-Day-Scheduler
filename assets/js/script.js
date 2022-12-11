@@ -1,8 +1,19 @@
 // Wrap all code that interacts with the DOM in a call to jQuery to ensure that
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
-var currentDate = dayjs().format('MMMM D, YYYY')
-$('#currentDay').text('Today is: ' + currentDate)
+var currentDate = dayjs().format('MMMM D, YYYY');
+$('#currentDay').text('Today is: ' + currentDate);
+
+var currentTime = dayjs().format('HH');
+for(i = 9; i < 18; i++) {
+  if(currentTime < i) {
+    $('#hour-' + i).addClass('future');
+  } else if(currentTime > i) {
+    $('#hour-' + i).addClass('past');
+  } else {
+    $('#hour-' + i).addClass('present');
+  }
+} 
 $(function (currentDate) {
 
   // TODO: Add a listener for click events on the save button. This code should
