@@ -2,7 +2,7 @@
 //stores the cutrrent date into a variable
 var currentDate = dayjs().format('MMMM D, YYYY');
 //saves the save buttons to a variable
-var saveBtn = document.querySelector('.saveBtn')
+var saveBtn = document.querySelectorAll('.saveBtn')
 // saves the textarea in each timeblock to a variable
 var nineBlock = document.querySelector('#h9t');
 var tenBlock = document.querySelector('#h10t');
@@ -61,12 +61,14 @@ function renderMsg () {
     return;
   };
 };
-//listens for a click on the save buttons then runs the save and reder msg funtions
-saveBtn.addEventListener('click', function(event) {
-  event.preventDefault();
-  saveMsg();
-  renderMsg();
-});
+//listens for a click on the save buttons then runs the savemsg and rendermsg funtions
+for(var i = 0; i < saveBtn.length; i++ ) {
+  saveBtn[i].addEventListener('click', function(event) {
+    event.preventDefault();
+    saveMsg();
+    renderMsg();
+  });
+}
 
 //runs the renderMsg funtion whgen the page loads
 function init() {
